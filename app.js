@@ -68,7 +68,7 @@
 //   return passwordCharacters.join("");
 // }
 
-// // Character Codes Looping Function
+// Character Codes Looping Function
 // function arrayLowToHigh(low, high) {
 //   let array = [];
 
@@ -77,6 +77,27 @@
 //   }
 //   return array;
 // }
+
+// Thank every day that has been given
 //
-// You cannot begin the next chapter of your life if you keep reading the last one
-// Persistance powers passion
+// Express gratitude every day
+
+/*
+my code
+*/
+
+const rangeCharacters = document.getElementById("range-char");
+const numberCharacters = document.getElementById("number-char");
+
+// sync range and number slider with html inputs
+
+rangeCharacters.addEventListener("input", syncCharAmount);
+numberCharacters.addEventListener("input", syncCharAmount);
+
+function syncCharAmount(e) {
+  // console.log(e.target.value);
+  const valueAmount = e.target.value;
+  rangeCharacters.value = valueAmount;
+  numberCharacters.value = valueAmount;
+  console.log(valueAmount);
+}
