@@ -95,6 +95,16 @@ const numbersEl = document.querySelector("#numbers");
 const symbolsEl = document.querySelector("#symbols");
 const uppercaseEl = document.querySelector("#uppercase");
 
+// creating the character codes
+
+const lowercaseCharCodes = arrayLowToHigh(97, 122);
+const numberCharCodes = arrayLowToHigh(48, 57);
+const symbolCharCodes = arrayLowToHigh(33, 47)
+  .concat(58, 64)
+  .concat(91, 96)
+  .concat(123, 126);
+const uppercaseCharCodes = arrayLowToHigh(65, 90);
+
 // sync range and number slider with html inputs
 
 rangeCharacters.addEventListener("input", syncCharAmount);
@@ -124,3 +134,14 @@ formContainer.addEventListener("submit", (e) => {
     includeSymbols
   );
 });
+
+// function that loops over the character codes
+
+function arrayLowToHigh(low, high) {
+  let array = [];
+
+  for (let i = low; i <= high; i++) {
+    array.push(i);
+  }
+  return array;
+}
