@@ -135,6 +135,19 @@ formContainer.addEventListener("submit", (e) => {
   );
 });
 
+function generatePassword(
+  characterAmount,
+  includeUppercase,
+  includeNumbers,
+  includeSymbols
+) {
+  // console.log(lowercaseCharCodes);
+  let charCodes = lowercaseCharCodes;
+  if (includeNumbers) charCodes = charCodes.concat(numberCharCodes);
+  if (includeSymbols) charCodes = charCodes.concat(symbolCharCodes);
+  if (includeUppercase) charCodes = charCodes.concat(uppercaseCharCodes);
+}
+
 // function that loops over the character codes
 
 function arrayLowToHigh(low, high) {
