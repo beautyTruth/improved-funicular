@@ -95,6 +95,8 @@ const numbersEl = document.querySelector("#numbers");
 const symbolsEl = document.querySelector("#symbols");
 const uppercaseEl = document.querySelector("#uppercase");
 
+const passwordDisplay = document.querySelector("#password-display");
+
 // creating the character codes
 
 const lowercaseCharCodes = arrayLowToHigh(97, 122);
@@ -123,9 +125,9 @@ function syncCharAmount(e) {
 formContainer.addEventListener("submit", (e) => {
   e.preventDefault();
   const characterAmount = numberCharacters.value;
-  const includeUppercase = uppercaseEl.value;
-  const includeNumbers = numbersEl.value;
-  const includeSymbols = symbolsEl.value;
+  const includeUppercase = uppercaseEl.checked;
+  const includeNumbers = numbersEl.checked;
+  const includeSymbols = symbolsEl.checked;
 
   const password = generatePassword(
     characterAmount,
@@ -133,6 +135,8 @@ formContainer.addEventListener("submit", (e) => {
     includeNumbers,
     includeSymbols
   );
+
+  passwordDisplay.innerText = password;
 });
 
 function generatePassword(
@@ -146,6 +150,16 @@ function generatePassword(
   if (includeNumbers) charCodes = charCodes.concat(numberCharCodes);
   if (includeSymbols) charCodes = charCodes.concat(symbolCharCodes);
   if (includeUppercase) charCodes = charCodes.concat(uppercaseCharCodes);
+
+  const passwordCharacters = [];
+
+  for (let h = 0; h < characterAmount; h++) {
+    let characterCodes =
+      charCodes[Math.floor(Math.random() * charCodes.length)];
+    passwordCharacters.push(String.fromCharCode(characterCodes));
+  }
+  // console.log(passwordCharacters);
+  return passwordCharacters.join("");
 }
 
 // function that loops over the character codes
