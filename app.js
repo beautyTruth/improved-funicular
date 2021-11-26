@@ -89,6 +89,12 @@ my code
 const rangeCharacters = document.getElementById("range-char");
 const numberCharacters = document.getElementById("number-char");
 
+const formContainer = document.querySelector("#password-form");
+
+const numbersEl = document.querySelector("#numbers");
+const symbolsEl = document.querySelector("#symbols");
+const uppercaseEl = document.querySelector("#uppercase");
+
 // sync range and number slider with html inputs
 
 rangeCharacters.addEventListener("input", syncCharAmount);
@@ -99,5 +105,22 @@ function syncCharAmount(e) {
   const valueAmount = e.target.value;
   rangeCharacters.value = valueAmount;
   numberCharacters.value = valueAmount;
-  console.log(valueAmount);
+  // console.log(valueAmount);
 }
+
+// generation of the password when "generate password" button is clicked (form is submitted)
+
+formContainer.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const characterAmount = numberCharacters.value;
+  const includeUppercase = uppercaseEl.value;
+  const includeNumbers = numbersEl.value;
+  const includeSymbols = symbolsEl.value;
+
+  const password = generatePassword(
+    characterAmount,
+    includeUppercase,
+    includeNumbers,
+    includeSymbols
+  );
+});
